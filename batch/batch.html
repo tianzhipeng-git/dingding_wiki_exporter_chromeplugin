@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./batch.css">
+    <title>批量导出钉钉知识库</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>批量导出钉钉知识库</h1>
+        <p id="sourceText">读取当前页面...</p>
+      </div>
+      <div class="actions">
+        <button id="reloadButton" type="button">重新扫描</button>
+        <button id="startButton" type="button" disabled>开始导出</button>
+        <button id="stopButton" type="button" disabled>停止</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel list-panel">
+        <div class="panel-head">
+          <div>
+            <h2>可导出条目</h2>
+            <p id="itemSummary">尚未扫描</p>
+          </div>
+          <div class="compact-actions">
+            <button id="selectAllButton" type="button">全选</button>
+            <button id="selectNoneButton" type="button">清空</button>
+          </div>
+        </div>
+        <div id="itemList" class="item-list"></div>
+      </section>
+
+      <aside class="panel options-panel">
+        <h2>导出设置</h2>
+        <label class="field">
+          <span>下载根目录</span>
+          <input id="rootDirInput" type="text" value="dingding-wiki-export">
+        </label>
+        <label class="field">
+          <span>最多导出篇数</span>
+          <input id="maxInput" type="number" min="1" placeholder="不限制">
+        </label>
+        <label class="check">
+          <input id="includeLinkedInput" type="checkbox" checked>
+          <span>包含正文里链接到的子文档</span>
+        </label>
+        <label class="check">
+          <input id="closeTabInput" type="checkbox" checked>
+          <span>完成后关闭后台导出标签页</span>
+        </label>
+        <p class="hint">文件会保存到 Chrome 默认下载目录下的子文件夹。若 Chrome 开启了“每次下载前询问保存位置”，批量导出时会逐个弹窗。</p>
+        <div class="progress">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+        <div id="runStatus" class="run-status">等待开始</div>
+      </aside>
+    </main>
+
+    <section class="panel log-panel">
+      <h2>日志</h2>
+      <pre id="logOutput"></pre>
+    </section>
+
+    <script src="./batch.js"></script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "dingding-wiki-exporter-chromeplugin",
+  "version": "0.1.1",
+  "private": true,
+  "description": "Export DingTalk wiki documents to Markdown.",
+  "scripts": {
+    "batch": "node tools/batch-export.js",
+    "check": "node --check contentScript.js && node --check popup/popup.js && node --check batch/batch.js && node --check tools/batch-export.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.53.0"
+  }
+}
